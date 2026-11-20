@@ -1,0 +1,731 @@
+:root {
+  --branco: #ffffff;
+  --azul-cerene: #3e4095;
+  --azul-noite: #2b2d6e;
+  --tinta: #262842;
+  --ciano: #00afef;
+  --vermelho: #ed3237;
+  --verde: #7ec14e;
+  --amarelo: #fff212;
+  --sobre-azul-suave: #c9cbf0;
+  --foco-escuro: #fff212;
+
+  --font-titulo: "Baloo 2", "Trebuchet MS", system-ui, sans-serif;
+  --font-texto: Lexend, "Segoe UI", system-ui, sans-serif;
+  --font-display: Fraunces, Georgia, "Times New Roman", serif;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --pad: 48px;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 860px;
+  display: flex;
+  flex-direction: column;
+  background: var(--azul-noite);
+  color: var(--branco);
+  font-family: var(--font-texto);
+  font-size: 17px;
+  line-height: 28px;
+}
+
+.hero__grade {
+  position: absolute;
+  inset: 0;
+  opacity: 0.55;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96'%3E%3Cpath d='M96 0H0V96' fill='none' stroke='%23c9cbf0' stroke-opacity='0.07'/%3E%3C/svg%3E");
+}
+
+.hero__in {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  width: 100%;
+  max-width: 1280px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 80px var(--pad) 40px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: center;
+  gap: 48px;
+}
+
+.hero__texto {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.hero__eyebrow {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--sobre-azul-suave);
+  animation: sobe 0.8s var(--ease) both;
+}
+
+.hero__fio {
+  display: block;
+  width: 56px;
+  height: 3px;
+  border-radius: 999px;
+  transform-origin: left center;
+  background: linear-gradient(90deg, var(--verde) 25%, var(--amarelo) 25% 50%, var(--vermelho) 50% 75%, var(--ciano) 75%);
+  animation: estendeFio 0.9s var(--ease) 0.1s both;
+}
+
+.hero__titulo {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 92px;
+  line-height: 96px;
+  font-weight: 300;
+  letter-spacing: -0.035em;
+  font-variation-settings: "opsz" 144;
+  color: var(--branco);
+}
+
+.hero__titulo .l {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 12px;
+  margin-bottom: -12px;
+}
+
+.hero__titulo .l > span {
+  display: inline-block;
+  animation: linha 1.05s var(--ease) both;
+}
+
+.hero__titulo .l:nth-child(2) > span {
+  animation-delay: 0.14s;
+}
+
+.hero__titulo em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--amarelo);
+}
+
+.hero__destaque {
+  margin: 0;
+  max-width: 470px;
+  font-size: 19px;
+  line-height: 32px;
+  font-weight: 300;
+  color: var(--sobre-azul-suave);
+  text-wrap: pretty;
+  animation: sobe 0.9s var(--ease) 0.28s both;
+}
+
+.hero__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 32px;
+  margin-top: 4px;
+  animation: sobe 0.9s var(--ease) 0.4s both;
+}
+
+.hero__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 56px;
+  padding: 6px 6px 6px 32px;
+  border-radius: 999px;
+  background: var(--amarelo);
+  color: var(--azul-noite);
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: background-color 0.25s, transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+.hero__btn-seta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: var(--azul-noite);
+  color: var(--amarelo);
+  font-size: 20px;
+  transition: transform 0.3s var(--ease);
+}
+
+.hero__btn-seta i,
+.hero__btn-seta .ic,
+.hero__btn-seta svg {
+  transition: transform 0.3s var(--ease);
+}
+
+.hero__btn:hover {
+  background: #f2e40b;
+  color: var(--azul-noite);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
+}
+
+.hero__btn:hover .hero__btn-seta {
+  transform: scale(1.05);
+}
+
+.hero__btn:hover .hero__btn-seta i,
+.hero__btn:hover .hero__btn-seta .ic,
+.hero__btn:hover .hero__btn-seta svg {
+  transform: translateX(3px);
+}
+
+.hero__btn:focus-visible {
+  outline: 3px solid var(--branco);
+  outline-offset: 4px;
+}
+
+.hero__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--branco);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.hero__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 6px;
+  height: 1.5px;
+  background: var(--verde);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.3s var(--ease);
+}
+
+.hero__link i,
+.hero__link .ic,
+.hero__link svg {
+  font-size: 22px;
+  color: var(--verde);
+  transition: transform 0.3s var(--ease);
+}
+
+.hero__link:hover {
+  color: var(--branco);
+}
+
+.hero__link:hover::after {
+  transform: scaleX(1);
+}
+
+.hero__link:hover i,
+.hero__link:hover .ic,
+.hero__link:hover svg {
+  transform: scale(1.1);
+}
+
+.hero__link:focus-visible {
+  outline: 3px solid var(--foco-escuro);
+  outline-offset: 4px;
+}
+
+.trilha {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  margin-inline: auto;
+  aspect-ratio: 500 / 560;
+}
+
+.trilha__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.trilha__anel {
+  fill: none;
+  stroke: rgba(201, 203, 240, 0.16);
+  stroke-width: 1;
+  transform-origin: 470px 70px;
+}
+
+.trilha__anel--1 {
+  stroke-dasharray: 4 10;
+  animation: girarAnel 48s linear infinite;
+}
+
+.trilha__anel--2 {
+  stroke-dasharray: 2 14;
+  animation: girarAnelReverso 68s linear infinite;
+}
+
+.trilha__eixo {
+  stroke: rgba(201, 203, 240, 0.24);
+  stroke-width: 1;
+  stroke-linecap: round;
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: estendeFio 1.2s var(--ease) 0.35s both;
+}
+
+.trilha__guia {
+  stroke: rgba(201, 203, 240, 0.14);
+  stroke-width: 1;
+  stroke-dasharray: 4 6;
+  transform-box: fill-box;
+  transform-origin: bottom center;
+  animation: sobeGuia 0.9s var(--ease) both;
+  transition: stroke 0.35s ease, stroke-width 0.35s ease, opacity 0.35s ease;
+}
+
+.trilha__guia--1 { animation-delay: 0.55s; }
+.trilha__guia--2 { animation-delay: 0.95s; }
+.trilha__guia--3 { animation-delay: 1.35s; }
+.trilha__guia--4 { animation-delay: 1.75s; }
+
+.trilha__guia--1.is-ativa { stroke: var(--verde); stroke-width: 1.5; }
+.trilha__guia--2.is-ativa { stroke: var(--amarelo); stroke-width: 1.5; }
+.trilha__guia--3.is-ativa { stroke: var(--vermelho); stroke-width: 1.5; }
+.trilha__guia--4.is-ativa { stroke: var(--ciano); stroke-width: 1.5; }
+
+.trilha__base {
+  fill: none;
+  stroke: rgba(201, 203, 240, 0.2);
+  stroke-width: 1.5;
+}
+
+.trilha__linha {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.72);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: desenha 2.2s var(--ease) 0.45s forwards;
+}
+
+.trilha__fluxo {
+  fill: none;
+  stroke: var(--amarelo);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 0.14 0.86;
+  stroke-dashoffset: 1.14;
+  opacity: 0;
+  animation: fluxoCurva 4.2s ease-in-out 2.5s infinite;
+}
+
+.no {
+  cursor: pointer;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pop 0.7s var(--ease) both;
+}
+
+.no .no__halo {
+  fill: none;
+  stroke-width: 1.5;
+  opacity: 0.42;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: opacity 0.3s ease, transform 0.35s var(--ease);
+}
+
+.no .no__onda {
+  fill: none;
+  stroke-width: 1.5;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  pointer-events: none;
+}
+
+.no .no__nucleo {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.35s var(--ease);
+}
+
+.no.is-ativa .no__nucleo,
+.no:hover .no__nucleo {
+  transform: scale(1.22);
+}
+
+.no.is-ativa .no__halo,
+.no:hover .no__halo {
+  opacity: 0.9;
+  transform: scale(1.12);
+}
+
+.no.is-ativa .no__onda {
+  animation: pulsoOnda 2s var(--ease) infinite;
+}
+
+.no--1 { animation-delay: 0.6s; }
+.no--1 .no__nucleo { fill: var(--verde); }
+.no--1 .no__halo,
+.no--1 .no__onda { stroke: var(--verde); }
+
+.no--2 { animation-delay: 1.05s; }
+.no--2 .no__nucleo { fill: var(--amarelo); }
+.no--2 .no__halo,
+.no--2 .no__onda { stroke: var(--amarelo); }
+
+.no--3 { animation-delay: 1.5s; }
+.no--3 .no__nucleo { fill: var(--vermelho); }
+.no--3 .no__halo,
+.no--3 .no__onda { stroke: var(--vermelho); }
+
+.no--4 { animation-delay: 1.95s; }
+.no--4 .no__nucleo { fill: var(--ciano); }
+.no--4 .no__halo,
+.no--4 .no__onda { stroke: var(--ciano); }
+
+.trilha__etapas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.etapa {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--sobre-azul-suave);
+  cursor: pointer;
+  animation: sobe 0.9s var(--ease) both;
+  transition: transform 0.35s var(--ease), opacity 0.35s ease;
+}
+
+.etapa__n {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 15px;
+  line-height: 18px;
+  color: var(--sobre-azul-suave);
+  opacity: 0.8;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.etapa strong {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 600;
+  color: var(--branco);
+  transition: color 0.3s ease;
+}
+
+.etapa small {
+  transition: color 0.3s ease;
+}
+
+.etapa.is-ativa,
+.etapa:hover {
+  transform: translateY(-4px);
+}
+
+.etapa.is-ativa .etapa__n,
+.etapa:hover .etapa__n {
+  opacity: 1;
+}
+
+.etapa--1.is-ativa .etapa__n { color: var(--verde); }
+.etapa--2.is-ativa .etapa__n { color: var(--amarelo); }
+.etapa--3.is-ativa .etapa__n { color: var(--vermelho); }
+.etapa--4.is-ativa .etapa__n { color: var(--ciano); }
+
+.etapa.is-ativa small {
+  color: var(--branco);
+}
+
+.etapa--1 { left: 14%; top: 87%; animation-delay: 0.8s; }
+.etapa--2 { left: 43%; top: 72%; animation-delay: 1.25s; }
+.etapa--3 { left: 70%; top: 49%; animation-delay: 1.7s; }
+.etapa--4 { right: 14%; top: 24%; text-align: right; align-items: flex-end; animation-delay: 2.15s; }
+
+.hero__base {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1280px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0 var(--pad) 40px;
+}
+
+.hero__diferenciais {
+  list-style: none;
+  margin: 0;
+  padding: 32px 0 0;
+  border-top: 1px solid rgba(201, 203, 240, 0.22);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: 32px;
+}
+
+.hero__diferenciais li {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  font-size: 15px;
+  line-height: 24px;
+  color: var(--sobre-azul-suave);
+  animation: sobe 0.85s var(--ease) calc(0.55s + var(--ordem, 0) * 0.12s) both;
+  transition: transform 0.3s var(--ease);
+}
+
+.hero__diferenciais li:hover {
+  transform: translateY(-2px);
+}
+
+.hero__diferenciais i,
+.hero__diferenciais .ic,
+.hero__diferenciais svg {
+  font-size: 28px;
+  color: var(--amarelo);
+  flex: none;
+  margin-top: 2px;
+  transition: transform 0.3s var(--ease);
+}
+
+.hero__diferenciais li:hover i,
+.hero__diferenciais li:hover .ic,
+.hero__diferenciais li:hover svg {
+  transform: scale(1.08);
+}
+
+.hero__diferenciais strong {
+  display: block;
+  font-weight: 600;
+  color: var(--branco);
+}
+
+@keyframes estendeFio {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes linha {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes desenha {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fluxoCurva {
+  0% {
+    opacity: 0;
+    stroke-dashoffset: 1.14;
+  }
+  12% {
+    opacity: 0.95;
+  }
+  82% {
+    opacity: 0.95;
+  }
+  100% {
+    opacity: 0;
+    stroke-dashoffset: -0.14;
+  }
+}
+
+@keyframes sobeGuia {
+  from {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pulsoOnda {
+  0% {
+    opacity: 0.7;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.85);
+  }
+}
+
+@keyframes girarAnel {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes girarAnelReverso {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes sobe {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__eyebrow,
+  .hero__fio,
+  .hero__titulo .l > span,
+  .hero__destaque,
+  .hero__acoes,
+  .hero__diferenciais li,
+  .trilha__anel--1,
+  .trilha__anel--2,
+  .trilha__eixo,
+  .trilha__guia,
+  .trilha__fluxo,
+  .no,
+  .no.is-ativa .no__onda,
+  .etapa {
+    animation: none;
+  }
+
+  .trilha__linha {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+
+  .trilha__fluxo {
+    display: none;
+  }
+
+  .hero__btn,
+  .hero__btn-seta,
+  .hero__btn-seta i,
+  .hero__btn-seta .ic,
+  .hero__btn-seta svg,
+  .hero__link,
+  .hero__link::after,
+  .etapa,
+  .no .no__nucleo,
+  .no .no__halo {
+    transition: none;
+  }
+}
+
+@media (max-width: 1100px) {
+  .hero__titulo {
+    font-size: 72px;
+    line-height: 76px;
+  }
+}
+
+@media (max-width: 900px) {
+  :root {
+    --pad: 20px;
+  }
+
+  .hero {
+    min-height: 0;
+  }
+
+  .hero__in {
+    grid-template-columns: 1fr;
+    padding-top: 48px;
+    gap: 40px;
+  }
+
+  .hero__titulo {
+    font-size: 52px;
+    line-height: 56px;
+  }
+
+  .hero__destaque {
+    font-size: 18px;
+    line-height: 30px;
+  }
+
+  .hero__btn {
+    width: 100%;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+
+  .trilha {
+    max-width: 440px;
+  }
+
+  .etapa strong {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .etapa small {
+    display: none;
+  }
+}
+
+.ic {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 0;
+  flex: none;
+}
+
+.ic svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
