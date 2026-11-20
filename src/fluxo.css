@@ -1,0 +1,78 @@
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #262842;
+  overflow-x: clip;
+}
+
+.pagina {
+  position: relative;
+}
+
+#inicio,
+#como-funciona,
+#especialidades,
+#equipe,
+#contato {
+  scroll-margin-top: 72px;
+}
+
+.hero {
+  min-height: calc(100svh - 84px);
+}
+
+.cf {
+  padding: 112px 0 96px;
+}
+
+.cf .final {
+  background: #141615;
+}
+
+.cf .final__forma--1 {
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.cf .final__texto {
+  color: rgba(244, 243, 239, 0.78);
+}
+
+.esp__palco {
+  top: 72px;
+  height: calc(100vh - 72px);
+}
+
+.eq {
+  padding: 112px 0 104px;
+}
+
+@media (max-width: 960px) {
+  html {
+    scroll-padding-top: 68px;
+  }
+
+  #inicio,
+  #como-funciona,
+  #especialidades,
+  #equipe,
+  #contato {
+    scroll-margin-top: 68px;
+  }
+
+  .hero {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 860px) {
+  .esp__palco {
+    top: 0;
+    height: calc(100svh - 68px);
+    min-height: 540px;
+  }
+}
