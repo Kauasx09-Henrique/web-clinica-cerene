@@ -1,0 +1,478 @@
+:root {
+  --branco: #ffffff;
+  --ciano: #00afef;
+  --vermelho: #ed3237;
+  --verde: #7ec14e;
+  --amarelo: #fff212;
+  --foco: #fff212;
+
+  --font-texto: Lexend, "Segoe UI", system-ui, sans-serif;
+  --font-display: Fraunces, Georgia, "Times New Roman", serif;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.esp {
+  position: relative;
+  width: 100%;
+  height: calc(var(--total, 6) * 100vh);
+  background: #111216;
+  color: var(--branco);
+  font-family: var(--font-texto);
+  font-size: 17px;
+  line-height: 28px;
+}
+
+.esp__palco {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #111216;
+}
+
+.esp__topo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 36px 56px 0;
+  pointer-events: none;
+}
+
+.esp__eyebrow {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-texto);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--branco);
+  pointer-events: auto;
+}
+
+.esp__fio {
+  display: block;
+  width: 44px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--verde) 25%, var(--amarelo) 25% 50%, var(--vermelho) 50% 75%, var(--ciano) 75%);
+}
+
+.esp__controles {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  pointer-events: auto;
+}
+
+.esp__contador {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.esp__setas {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.esp__seta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(17, 18, 22, 0.25);
+  color: var(--branco);
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.esp__seta--prev svg,
+.esp__seta--prev i,
+.esp__seta--prev .ic {
+  transform: rotate(180deg);
+}
+
+.esp__seta:hover:not(:disabled) {
+  background: var(--branco);
+  border-color: var(--branco);
+  color: #111216;
+}
+
+.esp__seta:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.esp__seta:focus-visible {
+  outline: 3px solid var(--foco);
+  outline-offset: 3px;
+}
+
+.esp__viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.esp__trilho {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+.painel {
+  --cor: var(--verde);
+  position: relative;
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #111216;
+}
+
+.painel--verde {
+  --cor: var(--verde);
+}
+
+.painel--amarelo {
+  --cor: var(--amarelo);
+}
+
+.painel--vermelho {
+  --cor: var(--vermelho);
+}
+
+.painel--ciano {
+  --cor: var(--ciano);
+}
+
+.painel__foto {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  transform: scale(1.06);
+  transition: transform 1.2s var(--ease);
+}
+
+.painel--ativo .painel__foto {
+  transform: scale(1);
+}
+
+.painel__veu {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(14, 15, 20, 0.42);
+}
+
+.painel__corpo {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: flex-end;
+  padding: 120px 56px 108px;
+  box-sizing: border-box;
+}
+
+.painel__conteudo {
+  max-width: 560px;
+  transform: translateY(20px);
+  opacity: 0.6;
+  transition: transform 0.7s var(--ease), opacity 0.6s ease;
+}
+
+.painel--ativo .painel__conteudo {
+  transform: none;
+  opacity: 1;
+}
+
+.painel__meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.painel__ponto {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--cor);
+}
+
+.painel__n {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+  line-height: 22px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.painel__titulo {
+  margin: 0 0 14px;
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 72px);
+  line-height: 1.04;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  font-variation-settings: "opsz" 144;
+  color: var(--branco);
+}
+
+.painel__conteudo p {
+  margin: 0 0 28px;
+  max-width: 46ch;
+  font-size: 17px;
+  line-height: 28px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.painel__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--branco);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.55);
+  transition: border-color 0.25s ease, gap 0.25s var(--ease);
+}
+
+.painel__link:hover {
+  gap: 14px;
+  border-bottom-color: var(--branco);
+}
+
+.painel__link:focus-visible {
+  outline: 3px solid var(--foco);
+  outline-offset: 4px;
+}
+
+.esp__base {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+}
+
+.esp__base-in {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 0 56px 22px;
+}
+
+.esp__passos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 24px;
+}
+
+.esp__passo {
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-family: var(--font-texto);
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.esp__passo:hover,
+.esp__passo.is-ativo {
+  color: var(--branco);
+}
+
+.esp__passo.is-ativo {
+  font-weight: 600;
+}
+
+.esp__passo:focus-visible {
+  outline: 3px solid var(--foco);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.esp__agendar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--branco);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+  transition: border-color 0.25s ease, gap 0.25s var(--ease);
+}
+
+.esp__agendar:hover {
+  gap: 12px;
+  border-bottom-color: var(--branco);
+}
+
+.esp__agendar:focus-visible {
+  outline: 3px solid var(--foco);
+  outline-offset: 4px;
+}
+
+.esp__progresso {
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+
+.esp__progresso-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--branco);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+@media (max-width: 1024px) {
+  .esp__topo {
+    padding: 28px 28px 0;
+  }
+
+  .painel__corpo {
+    padding: 108px 28px 96px;
+  }
+
+  .esp__base-in {
+    padding: 0 28px 18px;
+  }
+}
+
+@media (max-width: 860px) {
+  .esp {
+    height: auto;
+  }
+
+  .esp__palco {
+    position: relative;
+    height: 100svh;
+    min-height: 580px;
+  }
+
+  .esp__topo {
+    padding: 20px 20px 0;
+  }
+
+  .esp__seta {
+    width: 40px;
+    height: 40px;
+  }
+
+  .esp__viewport {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .esp__viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .painel {
+    scroll-snap-align: start;
+  }
+
+  .painel__foto {
+    transform: none;
+  }
+
+  .painel__corpo {
+    padding: 96px 20px 84px;
+  }
+
+  .painel__conteudo {
+    transform: none;
+    opacity: 1;
+  }
+
+  .painel__conteudo p {
+    font-size: 15px;
+    line-height: 24px;
+    margin-bottom: 20px;
+  }
+
+  .esp__base-in {
+    padding: 0 20px 14px;
+    justify-content: flex-start;
+  }
+
+  .esp__passos {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .painel__foto,
+  .painel__conteudo,
+  .painel__link,
+  .esp__seta,
+  .esp__agendar {
+    transition: none !important;
+  }
+
+  .painel__foto {
+    transform: none !important;
+  }
+}
+
+.ic {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 0;
+  flex: none;
+}
+
+.ic svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
