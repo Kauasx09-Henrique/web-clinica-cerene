@@ -1,0 +1,247 @@
+:root {
+  --azul-cerene: #3E4095;
+  --azul-noite: #2B2D6E;
+  --tinta: #262842;
+  --verde: #7EC14E;
+  --amarelo: #FFF212;
+  --vermelho: #ED3237;
+  --ciano: #00AFEF;
+  --branco: #FFFFFF;
+
+  --ciano-texto: #0072A3;
+  --verde-texto: #3B7420;
+  --vermelho-texto: #C4232A;
+  --tinta-suave: #5B5E7D;
+
+  --superficie-suave: #F5F6FB;
+  --superficie-ceu: #EAF8FE;
+  --superficie-folha: #EEF7E7;
+  --superficie-coral: #FDECEB;
+  --superficie-sol: #FFFBD6;
+  --linha: #D4D6EA;
+
+  --font-titulo: 'Baloo 2', cursive, sans-serif;
+  --font-texto: 'Lexend', sans-serif;
+
+  --espaco-1: 4px;
+  --espaco-2: 8px;
+  --espaco-3: 12px;
+  --espaco-4: 16px;
+  --espaco-6: 24px;
+  --espaco-8: 32px;
+  --espaco-12: 48px;
+  --espaco-16: 64px;
+  --espaco-24: 96px;
+
+  --raio-campo: 8px;
+  --raio-imagem: 16px;
+  --raio-card: 24px;
+  --raio-pilula: 9999px;
+
+  --sombra-card: 0 8px 24px rgba(62, 64, 149, 0.06);
+  --sombra-card-hover: 0 12px 32px rgba(62, 64, 149, 0.12);
+
+  --largura-maxima: 1200px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--branco);
+  color: var(--tinta);
+  font-family: var(--font-texto);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 28px;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-titulo);
+  color: var(--azul-cerene);
+}
+
+p {
+  max-width: 68ch;
+}
+
+a {
+  color: var(--ciano-texto);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+button, a {
+  font-family: var(--font-texto);
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 3px solid var(--ciano-texto);
+  outline-offset: 2px;
+}
+
+.fundo-escuro :focus-visible {
+  outline: 3px solid var(--amarelo);
+  outline-offset: 2px;
+}
+
+.container {
+  max-width: var(--largura-maxima);
+  margin: 0 auto;
+  padding: 0 var(--espaco-6);
+}
+
+.secao {
+  padding: var(--espaco-24) 0;
+}
+
+.titulo-hero {
+  font-family: var(--font-titulo);
+  font-weight: 800;
+  font-size: 56px;
+  line-height: 60px;
+  color: var(--azul-cerene);
+}
+
+.titulo-1 {
+  font-family: var(--font-titulo);
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 46px;
+  color: var(--azul-cerene);
+}
+
+.titulo-2 {
+  font-family: var(--font-titulo);
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+  color: var(--azul-cerene);
+}
+
+.titulo-3 {
+  font-family: var(--font-titulo);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 30px;
+  color: var(--azul-cerene);
+}
+
+.texto-destaque {
+  font-family: var(--font-texto);
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 32px;
+}
+
+.texto-corpo {
+  font-family: var(--font-texto);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 28px;
+}
+
+.texto-corpo-sm {
+  font-family: var(--font-texto);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 24px;
+}
+
+.texto-rotulo {
+  font-family: var(--font-texto);
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.texto-legenda {
+  font-family: var(--font-texto);
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--tinta-suave);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espaco-2);
+  min-height: 48px;
+  padding: 0 var(--espaco-6);
+  border-radius: var(--raio-pilula);
+  font-family: var(--font-texto);
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 20px;
+  border: 2px solid transparent;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-primario {
+  background-color: var(--azul-cerene);
+  color: var(--branco);
+}
+
+.btn-primario:hover {
+  background-color: var(--azul-noite);
+}
+
+.btn-secundario {
+  background-color: transparent;
+  border-color: var(--azul-cerene);
+  color: var(--azul-cerene);
+}
+
+.btn-secundario:hover {
+  background-color: var(--superficie-suave);
+}
+
+.btn-destaque {
+  background-color: var(--amarelo);
+  color: var(--azul-noite);
+}
+
+.btn-destaque:hover {
+  filter: brightness(0.95);
+}
+
+.btn-whatsapp {
+  background-color: var(--verde-texto);
+  color: var(--branco);
+}
+
+.btn-whatsapp:hover {
+  filter: brightness(0.92);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--espaco-4);
+  }
+
+  .secao {
+    padding: var(--espaco-16) 0;
+  }
+
+  .titulo-hero {
+    font-size: 38px;
+    line-height: 42px;
+  }
+
+  .titulo-1 {
+    font-size: 32px;
+    line-height: 38px;
+  }
+
+  .titulo-2 {
+    font-size: 26px;
+    line-height: 32px;
+  }
+}
