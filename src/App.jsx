@@ -7,6 +7,7 @@ import Especialidades from "./pages/especialidades";
 import Equipe from "./pages/equipe";
 import VideoClinica from "./pages/VideoClinica.jsx";
 import EspacoLocalizacao from "./pages/EspacoLocalizacao.jsx";
+import { SpeedInsights } from "@vercel/speed-insights/react"
 import "./fluxo.css";
 
 const WHATSAPP = "5561999999999";
@@ -63,6 +64,7 @@ function App() {
 
       <WhatsAppFlutuante numero={WHATSAPP} />
     </>
+    <SpeedInsights />
   );
 }
 
