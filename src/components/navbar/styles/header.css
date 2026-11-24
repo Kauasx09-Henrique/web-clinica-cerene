@@ -457,4 +457,8 @@
   .hd__link,
   .hd__cta,
   .hd__cta-ic,
-  .hd
+  .hd__burger span,
+  .hd-drawer__link {
+    transition: none;
+  }
+}
