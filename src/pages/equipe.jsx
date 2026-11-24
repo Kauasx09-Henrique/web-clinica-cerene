@@ -164,7 +164,7 @@ const EQUIPE = [
 ];
 
 const EASE = [0.22, 1, 0.36, 1];
-const TEMPO_TROCA = 6000;
+const TEMPO_TROCA = 7500;
 
 function iniciais(nome) {
     return nome
@@ -183,19 +183,19 @@ function Seta({ invertida = false }) {
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            strokeWidth="1.6"
+            strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"
             style={invertida ? { transform: "rotate(180deg)" } : undefined}
             aria-hidden="true"
         >
-            <path d="M5 12h14" />
-            <path d="m13 6 6 6-6 6" />
+            <path d="M4 12h16" />
+            <path d="m14 6 6 6-6 6" />
         </svg>
     );
 }
 
-const cortinaVariants = {
+const laminaVariants = {
     enter: (dir) => ({
         clipPath: dir >= 0 ? "inset(0% 0% 0% 100%)" : "inset(0% 100% 0% 0%)",
         zIndex: 2,
@@ -203,12 +203,12 @@ const cortinaVariants = {
     center: {
         clipPath: "inset(0% 0% 0% 0%)",
         zIndex: 2,
-        transition: { duration: 0.78, ease: EASE },
+        transition: { duration: 0.85, ease: EASE },
     },
     exit: {
         clipPath: "inset(0% 0% 0% 0%)",
         zIndex: 1,
-        transition: { duration: 0.78, ease: EASE },
+        transition: { duration: 0.85, ease: EASE },
     },
 };
 
@@ -248,7 +248,7 @@ export default function Equipe({
         offset: ["start end", "end start"],
     });
 
-    const parallaxY = useTransform(scrollYProgress, [0, 1], [-28, 28]);
+    const parallaxY = useTransform(scrollYProgress, [0, 1], [-24, 24]);
 
     const totalCategorias = grupos.length;
     const catSegura = totalCategorias > 0 ? estado.catIdx % totalCategorias : 0;
@@ -281,7 +281,9 @@ export default function Equipe({
         return () => clearTimeout(timer);
     }, [estado, pausado, podeAvancar, grupoAtual, grupos]);
 
-    if (!atual) return null;
+    if (!atual) {
+        return <section ref={secaoRef} id="equipe" hidden />;
+    }
 
     const selecionarCategoria = (novaCatIdx) => {
         if (novaCatIdx === catSegura) return;
@@ -327,9 +329,9 @@ export default function Equipe({
     };
 
     const aoDeslizar = (_, info) => {
-        if (info.offset.x < -50 || info.velocity.x < -300) {
+        if (info.offset.x < -45 || info.velocity.x < -280) {
             proximo();
-        } else if (info.offset.x > 50 || info.velocity.x > 300) {
+        } else if (info.offset.x > 45 || info.velocity.x > 280) {
             anterior();
         }
     };
@@ -351,71 +353,13 @@ export default function Equipe({
                 onBlurCapture={() => setPausado(false)}
             >
                 <div className="eq__in">
-                    <header className="eq__cab">
-                        <div className="eq__cab-esq">
-                            <motion.p
-                                className="eq__eyebrow"
-                                initial={{ opacity: 0, y: 12 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, amount: 0.5 }}
-                                transition={{ duration: 0.6, ease: EASE }}
-                            >
-                                <span className="eq__fio" aria-hidden="true" />
-                                Equipe multidisciplinar
-                            </motion.p>
+                    <div className="eq__barra-topo">
+                        <h2 id="eq-titulo" className="eq__eyebrow">
+                            <span className="eq__fio" aria-hidden="true" />
+                            Equipe
+                        </h2>
 
-                            <h2 id="eq-titulo" className="eq__titulo">
-                                <span className="eq__mascara">
-                                    <motion.span
-                                        initial={{ y: "105%" }}
-                                        whileInView={{ y: "0%" }}
-                                        viewport={{ once: true, amount: 0.5 }}
-                                        transition={{ duration: 0.8, ease: EASE }}
-                                    >
-                                        Pessoas reais por trás
-                                    </motion.span>
-                                </span>
-                                <span className="eq__mascara">
-                                    <motion.span
-                                        initial={{ y: "105%" }}
-                                        whileInView={{ y: "0%" }}
-                                        viewport={{ once: true, amount: 0.5 }}
-                                        transition={{ duration: 0.8, delay: 0.08, ease: EASE }}
-                                    >
-                                        de <em>cada conquista</em>.
-                                    </motion.span>
-                                </span>
-                            </h2>
-                        </div>
-
-                        <div className="eq__nav-topo">
-                            <span className="eq__contador" aria-live="polite">
-                                <strong>{String(profSeguro + 1).padStart(2, "0")}</strong>
-                                <span>/ {String(totalCategoria).padStart(2, "0")}</span>
-                            </span>
-                            <div className="eq__setas">
-                                <button
-                                    type="button"
-                                    className="eq__seta"
-                                    onClick={anterior}
-                                    aria-label="Profissional anterior"
-                                >
-                                    <Seta invertida />
-                                </button>
-                                <button
-                                    type="button"
-                                    className="eq__seta"
-                                    onClick={proximo}
-                                    aria-label="Próximo profissional"
-                                >
-                                    <Seta />
-                                </button>
-                            </div>
-                        </div>
-                    </header>
-
-                    <nav className="eq__cats-wrap" aria-label="Categorias da equipe">
-                        <div className="eq__cats" role="tablist">
+                        <nav className="eq__cats" aria-label="Áreas da equipe" role="tablist">
                             {grupos.map((grupo, idx) => {
                                 const ativa = idx === catSegura;
                                 return (
@@ -424,234 +368,202 @@ export default function Equipe({
                                         type="button"
                                         role="tab"
                                         aria-selected={ativa}
-                                        className={`eq-cat eq-cat--${grupo.cor} ${ativa ? "is-ativa" : ""}`}
+                                        className={`eq-cat ${ativa ? "is-ativa" : ""}`}
                                         onClick={() => selecionarCategoria(idx)}
                                     >
+                                        <span className="eq-cat__nome">{grupo.nome}</span>
+                                        <sup className="eq-cat__qtd">
+                                            {String(grupo.itens.length).padStart(2, "0")}
+                                        </sup>
                                         {ativa && (
                                             <motion.span
-                                                layoutId="eq-cat-pilula"
-                                                className="eq-cat__bg"
+                                                layoutId="eq-cat-linha"
+                                                className="eq-cat__linha"
                                                 transition={{
                                                     type: "spring",
-                                                    stiffness: 420,
+                                                    stiffness: 380,
                                                     damping: 34,
                                                 }}
                                             />
                                         )}
-                                        <span className="eq-cat__conteudo">
-                                            <span className="eq-cat__ponto" aria-hidden="true" />
-                                            <span className="eq-cat__nome">{grupo.nome}</span>
-                                            <span className="eq-cat__qtd">
-                                                {String(grupo.itens.length).padStart(2, "0")}
-                                            </span>
-                                        </span>
                                     </button>
                                 );
                             })}
-                        </div>
-                    </nav>
-
-                    <div className="eq__palco">
-                        <motion.div
-                            className="eq__quadro"
-                            onPanEnd={aoDeslizar}
-                            initial={{ opacity: 0, y: 28 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, amount: 0.25 }}
-                            transition={{ duration: 0.85, ease: EASE }}
-                        >
-                            <AnimatePresence initial={false} custom={estado.direcao}>
-                                <motion.div
-                                    key={atual.id}
-                                    custom={estado.direcao}
-                                    variants={cortinaVariants}
-                                    initial="enter"
-                                    animate="center"
-                                    exit="exit"
-                                    className="eq__lamina"
-                                >
-                                    <motion.div
-                                        className="eq__parallax"
-                                        style={{ y: parallaxY }}
-                                    >
-                                        {atual.foto && !semFoto[atual.id] ? (
-                                            <motion.img
-                                                src={atual.foto}
-                                                alt={`${atual.nome}, ${atual.funcao}`}
-                                                className="eq__foto"
-                                                draggable={false}
-                                                initial={{ scale: 1.1 }}
-                                                animate={{ scale: 1 }}
-                                                exit={{ scale: 1.04 }}
-                                                transition={{ duration: 0.95, ease: EASE }}
-                                                onError={() => marcarSemFoto(atual.id)}
-                                            />
-                                        ) : (
-                                            <div className="eq__fallback" aria-hidden="true">
-                                                <span>{iniciais(atual.nome)}</span>
-                                            </div>
-                                        )}
-                                    </motion.div>
-                                </motion.div>
-                            </AnimatePresence>
-
-                            <div className="eq__progresso-foto" aria-hidden="true">
-                                {!pausado && podeAvancar ? (
-                                    <motion.span
-                                        key={`timer-${atual.id}-${catSegura}`}
-                                        className="eq__filete"
-                                        initial={{ scaleX: 0 }}
-                                        animate={{ scaleX: 1 }}
-                                        transition={{
-                                            duration: TEMPO_TROCA / 1000,
-                                            ease: "linear",
-                                        }}
-                                    />
-                                ) : (
-                                    <span className="eq__filete eq__filete--pausado" />
-                                )}
-                            </div>
-                        </motion.div>
-
-                        <div className="eq__detalhe">
-                            <AnimatePresence mode="wait">
-                                <motion.div
-                                    key={atual.id}
-                                    className="eq__info"
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    exit={{ opacity: 0, transition: { duration: 0.2 } }}
-                                >
-                                    <motion.div
-                                        className="eq__meta"
-                                        initial={{ opacity: 0, y: 12 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ duration: 0.5, ease: EASE }}
-                                    >
-                                        <span className="eq__funcao">
-                                            <span className="eq__ponto" aria-hidden="true" />
-                                            {atual.funcao}
-                                        </span>
-                                        <span className="eq__registro">{atual.registro}</span>
-                                    </motion.div>
-
-                                    <h3 className="eq__nome">
-                                        <span className="eq__mascara">
-                                            <motion.span
-                                                initial={{ y: "105%" }}
-                                                animate={{ y: "0%" }}
-                                                transition={{ duration: 0.65, delay: 0.04, ease: EASE }}
-                                            >
-                                                {atual.nome}
-                                            </motion.span>
-                                        </span>
-                                    </h3>
-
-                                    <motion.p
-                                        className="eq__frase"
-                                        initial={{ opacity: 0, y: 14 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ duration: 0.58, delay: 0.1, ease: EASE }}
-                                    >
-                                        {atual.frase}
-                                    </motion.p>
-
-                                    <motion.div
-                                        className="eq__formacao-box"
-                                        initial={{ opacity: 0, y: 12 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ duration: 0.58, delay: 0.16, ease: EASE }}
-                                    >
-                                        <span className="eq__formacao-rotulo">
-                                            Formação e especializações
-                                        </span>
-                                        <p className="eq__formacao">{atual.formacao}</p>
-                                    </motion.div>
-
-                                    <motion.div
-                                        className="eq__acoes"
-                                        initial={{ opacity: 0, y: 12 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ duration: 0.55, delay: 0.22, ease: EASE }}
-                                    >
-                                        <a className="eq__cta" href={agendarHref}>
-                                            <span>Agendar avaliação</span>
-                                            <span className="eq__cta-ic" aria-hidden="true">
-                                                <Seta />
-                                            </span>
-                                        </a>
-                                    </motion.div>
-                                </motion.div>
-                            </AnimatePresence>
-                        </div>
+                        </nav>
                     </div>
 
-                    <nav className="eq__trilha" aria-label={`Profissionais de ${grupoAtual.nome}`}>
-                        <div className="eq__trilha-cab">
-                            <span className="eq__trilha-cat">{grupoAtual.nome}</span>
-                            <span className="eq__trilha-hint">
-                                {totalCategoria === 1
-                                    ? "1 profissional"
-                                    : `${totalCategoria} profissionais`}
-                            </span>
+                    <div className="eq__monografia">
+                        <div className="eq__retrato-col">
+                            <motion.div
+                                className="eq__quadro"
+                                onPanEnd={aoDeslizar}
+                                initial={{ opacity: 0, y: 24 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.2 }}
+                                transition={{ duration: 0.85, ease: EASE }}
+                            >
+                                <AnimatePresence initial={false} custom={estado.direcao}>
+                                    <motion.div
+                                        key={atual.id}
+                                        custom={estado.direcao}
+                                        variants={laminaVariants}
+                                        initial="enter"
+                                        animate="center"
+                                        exit="exit"
+                                        className="eq__lamina"
+                                    >
+                                        <motion.div
+                                            className="eq__parallax"
+                                            style={{ y: parallaxY }}
+                                        >
+                                            {atual.foto && !semFoto[atual.id] ? (
+                                                <motion.img
+                                                    src={atual.foto}
+                                                    alt={`${atual.nome}, ${atual.funcao}`}
+                                                    className="eq__foto"
+                                                    draggable={false}
+                                                    initial={{ scale: 1.09 }}
+                                                    animate={{ scale: 1 }}
+                                                    exit={{ scale: 1.03 }}
+                                                    transition={{ duration: 1, ease: EASE }}
+                                                    onError={() => marcarSemFoto(atual.id)}
+                                                />
+                                            ) : (
+                                                <div className="eq__fallback" aria-hidden="true">
+                                                    <span>{iniciais(atual.nome)}</span>
+                                                </div>
+                                            )}
+                                        </motion.div>
+                                    </motion.div>
+                                </AnimatePresence>
+                            </motion.div>
                         </div>
 
-                        <AnimatePresence mode="wait">
-                            <motion.ul
-                                key={grupoAtual.nome}
-                                className="eq__dock"
-                                role="tablist"
-                                initial={{ opacity: 0, y: 14 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -10 }}
-                                transition={{ duration: 0.35, ease: EASE }}
-                            >
-                                {itensCategoria.map((pessoa, indice) => {
-                                    const selecionado = indice === profSeguro;
+                        <div className="eq__texto-col">
+                            <div className="eq__controle-topo">
+                                <span className="eq__indice" aria-live="polite">
+                                    <em>{String(profSeguro + 1).padStart(2, "0")}</em>
+                                    <span>/ {String(totalCategoria).padStart(2, "0")}</span>
+                                </span>
 
-                                    return (
-                                        <li
-                                            key={pessoa.id}
-                                            className={`eq-thumb eq-thumb--${pessoa.cor} ${selecionado ? "is-ativo" : ""}`}
+                                <div className="eq__setas">
+                                    <button
+                                        type="button"
+                                        className="eq__seta"
+                                        onClick={anterior}
+                                        aria-label="Profissional anterior"
+                                    >
+                                        <Seta invertida />
+                                    </button>
+                                    <button
+                                        type="button"
+                                        className="eq__seta"
+                                        onClick={proximo}
+                                        aria-label="Próximo profissional"
+                                    >
+                                        <Seta />
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div className="eq__conteudo">
+                                <AnimatePresence mode="wait">
+                                    <motion.div
+                                        key={atual.id}
+                                        className="eq__bloco"
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        exit={{ opacity: 0, transition: { duration: 0.2 } }}
+                                    >
+                                        <motion.p
+                                            className="eq__meta"
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ duration: 0.48, ease: EASE }}
                                         >
-                                            <button
-                                                type="button"
-                                                role="tab"
-                                                aria-selected={selecionado}
-                                                className="eq-thumb__btn"
-                                                onClick={() => selecionarProfissional(indice)}
-                                                onMouseEnter={() => selecionarProfissional(indice)}
+                                            <span className="eq__ponto" aria-hidden="true" />
+                                            <span className="eq__funcao">{atual.funcao}</span>
+                                            <span className="eq__sep" aria-hidden="true">·</span>
+                                            <span className="eq__registro">{atual.registro}</span>
+                                        </motion.p>
+
+                                        <h3 className="eq__nome">
+                                            <span className="eq__mascara">
+                                                <motion.span
+                                                    initial={{ y: "105%" }}
+                                                    animate={{ y: "0%" }}
+                                                    transition={{ duration: 0.68, delay: 0.04, ease: EASE }}
+                                                >
+                                                    {atual.nome}
+                                                </motion.span>
+                                            </span>
+                                        </h3>
+
+                                        <motion.p
+                                            className="eq__frase"
+                                            initial={{ opacity: 0, y: 12 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ duration: 0.56, delay: 0.1, ease: EASE }}
+                                        >
+                                            {atual.frase}
+                                        </motion.p>
+
+                                        <motion.div
+                                            className="eq__formacao-wrap"
+                                            initial={{ opacity: 0, y: 12 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ duration: 0.56, delay: 0.16, ease: EASE }}
+                                        >
+                                            <span className="eq__rotulo">Formação</span>
+                                            <p className="eq__formacao">{atual.formacao}</p>
+                                        </motion.div>
+
+                                        <motion.div
+                                            className="eq__acao-wrap"
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ duration: 0.5, delay: 0.22, ease: EASE }}
+                                        >
+                                            <a className="eq__link" href={agendarHref}>
+                                                <span>Agendar avaliação</span>
+                                                <Seta />
+                                            </a>
+                                        </motion.div>
+                                    </motion.div>
+                                </AnimatePresence>
+                            </div>
+
+                            <div className="eq__rodape-col">
+                                <span className="eq__rodape-rotulo">{grupoAtual.nome}</span>
+                                <ol className="eq__nomes" aria-label={`Profissionais de ${grupoAtual.nome}`}>
+                                    {itensCategoria.map((pessoa, indice) => {
+                                        const ativo = indice === profSeguro;
+                                        return (
+                                            <li
+                                                key={pessoa.id}
+                                                className={`eq-nome-item ${ativo ? "is-ativo" : ""}`}
                                             >
-                                                <span className="eq-thumb__img-wrap">
-                                                    {pessoa.foto && !semFoto[pessoa.id] ? (
-                                                        <img
-                                                            src={pessoa.foto}
-                                                            alt=""
-                                                            loading="lazy"
-                                                            onError={() => marcarSemFoto(pessoa.id)}
-                                                        />
-                                                    ) : (
-                                                        <span className="eq-thumb__iniciais">
-                                                            {iniciais(pessoa.nome)}
-                                                        </span>
-                                                    )}
-                                                </span>
-
-                                                <span className="eq-thumb__txt">
-                                                    <strong className="eq-thumb__nome">
-                                                        {pessoa.nome}
-                                                    </strong>
-                                                    <span className="eq-thumb__funcao">
-                                                        {pessoa.funcao}
+                                                <button
+                                                    type="button"
+                                                    className="eq-nome-btn"
+                                                    aria-current={ativo ? "true" : undefined}
+                                                    onClick={() => selecionarProfissional(indice)}
+                                                    onMouseEnter={() => selecionarProfissional(indice)}
+                                                >
+                                                    <span className="eq-nome-btn__n">
+                                                        {String(indice + 1).padStart(2, "0")}
                                                     </span>
-                                                </span>
+                                                    <span className="eq-nome-btn__txt">
+                                                        {pessoa.nome}
+                                                    </span>
+                                                </button>
 
-                                                <span className="eq-thumb__trilho-barra" aria-hidden="true">
-                                                    {selecionado && (
+                                                <span className="eq-nome-item__trilho" aria-hidden="true">
+                                                    {ativo && (
                                                         !pausado && podeAvancar ? (
                                                             <motion.span
-                                                                key={`dock-timer-${pessoa.id}-${catSegura}`}
-                                                                className="eq-thumb__barra"
+                                                                key={`prog-${pessoa.id}-${catSegura}`}
+                                                                className="eq-nome-item__barra"
                                                                 initial={{ scaleX: 0 }}
                                                                 animate={{ scaleX: 1 }}
                                                                 transition={{
@@ -660,17 +572,17 @@ export default function Equipe({
                                                                 }}
                                                             />
                                                         ) : (
-                                                            <span className="eq-thumb__barra" />
+                                                            <span className="eq-nome-item__barra" />
                                                         )
                                                     )}
                                                 </span>
-                                            </button>
-                                        </li>
-                                    );
-                                })}
-                            </motion.ul>
-                        </AnimatePresence>
-                    </nav>
+                                            </li>
+                                        );
+                                    })}
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </MotionConfig>
