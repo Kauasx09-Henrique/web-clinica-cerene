@@ -63,8 +63,8 @@ function App() {
       />
 
       <WhatsAppFlutuante numero={WHATSAPP} />
+      <SpeedInsights />
     </>
-    <SpeedInsights />
   );
 }
 
