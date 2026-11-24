@@ -36,7 +36,7 @@ function Seta() {
 }
 
 export default function Header({
-    logoSrc = "/cerene-logo-original.png",
+    logoSrc = "logos/logo-principal.png",
     links = LINKS,
     agendarHref = "#contato",
     whatsappNumero = "55XXXXXXXXXXX",

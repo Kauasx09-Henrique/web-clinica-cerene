@@ -40,7 +40,7 @@ const NAVEGACAO = [
 ];
 
 export default function Rodape({
-    logoSrc = "/cerene-logo-original.png",
+    logoSrc = "logos/logo-principal.png",
     agendarHref = "#contato",
     whatsappNumero = "55XXXXXXXXXXX",
     telefone = "[TELEFONE]",

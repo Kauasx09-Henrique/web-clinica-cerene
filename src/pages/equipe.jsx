@@ -25,7 +25,8 @@ const EQUIPE = [
         registro: "CREFITO-11 00000",
         cor: "verde",
         status: "ativo",
-        foto: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=1200&q=85",
+        destaque: true,
+        foto: "fotos/equipe/monica.jpg",
         frase: "Atuação no desenvolvimento infantil, com foco na integração sensorial, saúde perinatal e promoção do desenvolvimento e da autonomia da criança.",
         formacao: "Graduada em Terapia Ocupacional pela FCMMG (1993). Especialista em Saúde Perinatal, Desenvolvimento e Educação do Bebê pela UnB. Possui formações em Bobath Básico Pediátrico e Baby Avançado, Integração Sensorial de Ayres®, Integração Sensorial pela USC WPS e Advanced Intensive Mentorship – Level 1 (Star Institute). Treinamento nas escalas AIMS, TIMP, Denver, Bayley e HINE.",
     },
@@ -37,7 +38,7 @@ const EQUIPE = [
         registro: "CREFITO-11 19866-TO",
         cor: "verde",
         status: "ativo",
-        foto: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=1200&q=85",
+        foto: "fotos/equipe/leticia.jpg",
         frase: "Atuação no desenvolvimento infantil, com foco na integração sensorial, aprendizagem, seletividade alimentar e habilidades necessárias para a autonomia da criança.",
         formacao: "Graduada em Terapia Ocupacional pela Universidade de Brasília (UnB), em 2017. Pós-graduada em Transtorno do Espectro Autista (TEA). Possui Certificação Internacional em Integração Sensorial de Ayres pela CLASI, formação internacional em avaliação e intervenção no ensino e aprendizagem da escrita, habilitação em avaliação e intervenção em seletividade alimentar e formação em avaliação e tratamento do processamento visual, percepção visual e habilidades motoras visuais.",
     },
@@ -49,7 +50,7 @@ const EQUIPE = [
         registro: "CREFITO-11 00000",
         cor: "verde",
         status: "ativo",
-        foto: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=1200&q=85",
+        foto: "fotos/equipe/tiago.jpg",
         frase: "Atuação no desenvolvimento infantil, com foco na integração sensorial, no contexto escolar e na promoção da autonomia e participação da criança.",
         formacao: "Graduado em Terapia Ocupacional pela Universidade de Brasília (UnB), em fevereiro de 2017. Especialista Profissional em Terapia Ocupacional no Contexto Escolar pelo COFFITO. Possui Certificação Internacional em Integração Sensorial de Ayres (CLASI), habilitação no Conceito Neuroevolutivo Bobath Infantil (ABDAN) e no Curso Avançado de Bebês (Bobath Baby).",
     },
@@ -66,6 +67,19 @@ const EQUIPE = [
         formacao: "Formação em atualização.",
     },
     {
+        id: "raquel-aboudib",
+        nome: "Raquel Aboudib",
+        categoria: "Fisioterapia",
+        funcao: "Fisioterapeuta",
+        registro: "CREFITO-11 00000",
+        cor: "azul",
+        status: "ativo",
+        destaque: true,
+        foto: "fotos/equipe/raquel.jpg",
+        frase: "Atuação em fisioterapia pediátrica e reabilitação neurofuncional.",
+        formacao: "Formação em atualização.",
+    },
+    {
         id: "barbara",
         nome: "Barbara",
         categoria: "Fisioterapia",
@@ -73,7 +87,7 @@ const EQUIPE = [
         registro: "CREFITO-11 00000",
         cor: "azul",
         status: "ativo",
-        foto: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=1200&q=85",
+        foto: "fotos/equipe/barbara.jpg",
         frase: "Atuação especializada em neuropediatria, com foco na reabilitação neurofuncional e no desenvolvimento motor de crianças e adolescentes.",
         formacao: "Graduada em Fisioterapia desde 2014, atua na área de neuropediatria desde 2016. Especialista em Fisioterapia Neurofuncional na Criança e no Adolescente. Possui formações nos métodos Bobath, TheraSuit e RTA.",
     },
@@ -85,7 +99,7 @@ const EQUIPE = [
         registro: "CREFITO-11 00000",
         cor: "azul",
         status: "ativo",
-        foto: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=1200&q=85",
+        foto: "fotos/equipe/pires.jpg",
         frase: "Reabilitação neuromotora infantil com abordagens terapêuticas individualizadas, promovendo o desenvolvimento, a funcionalidade e a qualidade de vida das crianças.",
         formacao: "Graduada em Fisioterapia pela Universidade Católica de Brasília (UCB), em 2010. Pós-graduada em Reabilitação Neurofuncional. Atua em neuropediatria desde 2011, com experiência na reabilitação de crianças com alterações neuromotoras. Possui formações em Bobath Pediátrico e Baby Avançado, CME I, RTA, TASES, TheraTogs, tDCS e abordagem em Mielomeningocele.",
     },
@@ -97,21 +111,9 @@ const EQUIPE = [
         registro: "CREFITO-11 00000",
         cor: "azul",
         status: "ativo",
-        foto: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=1200&q=85",
+        foto: "fotos/equipe/lourrane.jpg",
         frase: "Atuação especializada em fisioterapia pediátrica e neurofuncional, promovendo o desenvolvimento motor, a funcionalidade e a autonomia de crianças e adolescentes.",
         formacao: "Graduada em Fisioterapia pela Universidade de Brasília (UnB), com 9 anos de formação. Mestre em Ciências e Tecnologias da Saúde pela UnB. Pós-graduada em Fisioterapia Pediátrica e Especialista em Fisioterapia Neurofuncional da Criança e do Adolescente pelo COFFITO. Habilitada no Conceito Neuroevolutivo Bobath, com formação em TheraSuit (Avançado), RTA, entre outros métodos terapêuticos.",
-    },
-    {
-        id: "raquel-aboudib",
-        nome: "Raquel Aboudib",
-        categoria: "Fisioterapia",
-        funcao: "Fisioterapeuta",
-        registro: "CREFITO-11 00000",
-        cor: "azul",
-        status: "inativo",
-        foto: "",
-        frase: "Atuação em fisioterapia pediátrica e reabilitação neurofuncional.",
-        formacao: "Formação em atualização.",
     },
     {
         id: "carla-marina-tome-mendes",
@@ -121,7 +123,7 @@ const EQUIPE = [
         registro: "CRFa 5-00000",
         cor: "vermelho",
         status: "ativo",
-        foto: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=1200&q=85",
+        foto: "fotos/equipe/carla.jpg",
         frase: "Atuação no desenvolvimento das funções oromotoras, linguagem e alimentação infantil, promovendo mais autonomia e qualidade de vida para as crianças.",
         formacao: "Graduada em Fonoaudiologia pela UNIPLAN/DF (2009), com pós-graduação em Motricidade Oral com enfoque em Disfagia. Possui formações em Motricidade Oral no Período Neonatal e Disfagia Infantil, Conceito Bobath aplicado às funções oromotoras e à alimentação infantil, Abordagem Integrativa para o Desenvolvimento Alimentar Infantil, Laserterapia aplicada à Fonoaudiologia e Método Therapy Taping – Estimulação Tegumentar.",
     },
@@ -236,11 +238,17 @@ export default function Equipe({
             ...[...mapa.keys()].filter((c) => !ORDEM_CATEGORIAS.includes(c)),
         ];
 
-        return nomesOrdenados.map((nome) => ({
-            nome,
-            cor: mapa.get(nome)[0].cor || "verde",
-            itens: mapa.get(nome),
-        }));
+        return nomesOrdenados.map((nome) => {
+            const itensOrdenados = [...mapa.get(nome)].sort(
+                (a, b) => Number(Boolean(b.destaque)) - Number(Boolean(a.destaque))
+            );
+
+            return {
+                nome,
+                cor: itensOrdenados[0].cor || "verde",
+                itens: itensOrdenados,
+            };
+        });
     }, [profissionais]);
 
     const { scrollYProgress } = useScroll({
