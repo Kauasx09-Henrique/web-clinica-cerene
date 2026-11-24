@@ -42,15 +42,14 @@ const NAVEGACAO = [
 export default function Rodape({
     logoSrc = "logos/logo-principal.png",
     agendarHref = "#contato",
-    whatsappNumero = "55XXXXXXXXXXX",
-    telefone = "[TELEFONE]",
-    email = "[E-MAIL]",
-    endereco = "[ENDEREÇO COMPLETO]",
-    cidade = "[CIDADE — UF]",
-    horario = "[HORÁRIO DE ATENDIMENTO]",
-    instagram = "https://instagram.com/[PERFIL]",
-    responsavelTecnico = "[NOME] · [CONSELHO] [NÚMERO]",
-    cnpj = "[CNPJ]",
+    whatsappNumero = "+5561983632530",
+    telefone = "(61) 3264-0030",
+    email = "cerene2017@gmail.com",
+    endereco = "SEPS EQ 709/909, Lote A, 1º Subsolo, Clínica 05 — Centro Médico Júlio Adnet, Asa Sul",
+    cidade = "Brasília — DF",
+    horario = " Segunda a sexta, das 8h às 20h; sábado, das 8h às 13h",
+    instagram = "https://www.instagram.com/clinicacerene",
+    cnpj = "27.039.877/0001-42"
 }) {
     const ref = useRef(null);
     const [dentro, setDentro] = useState(false);
@@ -181,7 +180,7 @@ export default function Rodape({
                 <div className="rp__base">
                     <p className="rp__legal">
                         © {ano} Clínica Cerene — Centro de Reabilitação e Estudo Neurológico.
-                        <span>CNPJ {cnpj} · Responsável técnico: {responsavelTecnico}</span>
+                        <span>CNPJ {cnpj}</span>
                     </p>
 
                     <button type="button" className="rp__topo" onClick={aoTopo}>
