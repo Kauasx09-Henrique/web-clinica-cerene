@@ -10,14 +10,8 @@ import EspacoLocalizacao from "./pages/EspacoLocalizacao.jsx";
 import { SpeedInsights } from "@vercel/speed-insights/react"
 import "./fluxo.css";
 
-const WHATSAPP = "5561999999999";
+const WHATSAPP = "5561983632530";
 
-const DADOS_CLINICA = {
-  endereco: "Endereço completo da Clínica Cerene",
-  cidade: "Brasília — DF",
-  horario: "Segunda a sexta, das 7h às 19h",
-  telefone: "(61) 0000-0000",
-};
 
 const LINKS_MENU = [
   { label: "Início", href: "#inicio" },
@@ -47,19 +41,19 @@ function App() {
         <Equipe agendarHref="#contato" />
         <VideoClinica videoSrc="video/video-clinica.MOV" />
         <EspacoLocalizacao
-          endereco={DADOS_CLINICA.endereco}
-          cidade={DADOS_CLINICA.cidade}
-          horario={DADOS_CLINICA.horario}
-          telefone={DADOS_CLINICA.telefone}
+          endereco={Rodape.endereco}
+          cidade={Rodape.cidade}
+          horario={Rodape.horario}
+          telefone={Rodape.telefone}
         />
       </main>
 
       <Rodape
         agendarHref="#contato"
         whatsappNumero={WHATSAPP}
-        endereco={`${DADOS_CLINICA.endereco}, ${DADOS_CLINICA.cidade}`}
-        horario={DADOS_CLINICA.horario}
-        telefone={DADOS_CLINICA.telefone}
+
+        horario={Rodape.horario}
+        telefone={Rodape.telefone}
       />
 
       <WhatsAppFlutuante numero={WHATSAPP} />

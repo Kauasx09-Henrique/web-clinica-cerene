@@ -64,10 +64,10 @@ const EASE = [0.22, 1, 0.36, 1];
 
 export default function EspacoLocalizacao({
     fotos = FOTOS_PADRAO,
-    endereco = "Endereço completo da Clínica Cerene",
+    endereco = "SEPS EQ 709/909, Lote A, 1º Subsolo, Clínica 05 — Centro Médico Júlio Adnet, Asa Sul",
     cidade = "Brasília — DF",
-    horario = "Segunda a sexta, das 7h às 19h",
-    telefone = "(61) 0000-0000",
+    horario = "Segunda a sexta, das 8h às 20h; sábado, das 8h às 13h",
+    telefone = "(61) 3264-0030",
     embedUrl = MAPS_EMBED_URL,
 }) {
     const [fotoAberta, setFotoAberta] = useState(null);

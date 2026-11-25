@@ -18,7 +18,9 @@ const ICONES = {
         "M205.66,117.66a8,8,0,0,1-11.32,0L136,59.31V216a8,8,0,0,1-16,0V59.31L61.66,117.66a8,8,0,0,1-11.32-11.32l72-72a8,8,0,0,1,11.32,0l72,72A8,8,0,0,1,205.66,117.66Z",
     "arrow-up-right":
         "M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z",
-};
+    "facebook-logo":
+        "M256 128C256 57.3 198.7 0 128 0S0 57.3 0 128c0 63.9 46.8 116.8 108 126.7V165H75.5v-37H108V99.8c0-32.1 19.1-50 48.2-50 14 0 28.7 2.5 28.7 2.5v31.5h-16.2c-15.9 0-20.9 9.9-20.9 20v24.2h35.6l-5.7 37H147.8v89.7C209.2 244.8 256 191.9 256 128Z",
+}
 
 function Ic({ nome }) {
     return (
@@ -42,7 +44,7 @@ const NAVEGACAO = [
 export default function Rodape({
     logoSrc = "logos/logo-principal.png",
     agendarHref = "#contato",
-    whatsappNumero = "+5561983632530",
+    whatsappNumero = "5561983632530",
     telefone = "(61) 3264-0030",
     email = "cerene2017@gmail.com",
     endereco = "SEPS EQ 709/909, Lote A, 1º Subsolo, Clínica 05 — Centro Médico Júlio Adnet, Asa Sul",
@@ -136,6 +138,27 @@ export default function Rodape({
                         >
                             <Ic nome="instagram-logo" />
                             <span>Instagram</span>
+                        </a>
+
+                        <a
+                            className="rp__social"
+                            href={`https://wa.me/${whatsappNumero}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="WhatsApp da Clínica Cerene"
+                        >
+                            <Ic nome="whatsapp-logo" />
+                            <span>WhatsApp</span>
+                        </a>
+                        <a
+                            className="rp__social"
+                            href="https://www.facebook.com/cerenebrasilia/?locale=pt_BR"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Facebook da Clínica Cerene"
+                        >
+                            <Ic nome="facebook-logo" />
+                            <span>Facebook</span>
                         </a>
                     </div>
 

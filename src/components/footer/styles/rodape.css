@@ -484,4 +484,14 @@
   .rp__topo-ic {
     transition: none;
   }
+ .rp__contato-endereco {
+    align-items: flex-start;
+}
+
+.rp__endereco {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
 }
