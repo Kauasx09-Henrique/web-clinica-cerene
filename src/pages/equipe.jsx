@@ -68,7 +68,7 @@ const EQUIPE = [
     },
     {
         id: "raquel-aboudib",
-        nome: "Raquel Aboudib",
+        nome: "Raquel Aboudib ",
         categoria: "Fisioterapia",
         funcao: "Fisioterapeuta · Sócia-proprietária",
         registro: "CREFITO-23566",
@@ -76,8 +76,8 @@ const EQUIPE = [
         status: "ativo",
         destaque: true,
         foto: "fotos/equipe/raquel.jpg",
-        frase: "Atuação em fisioterapia pediátrica e reabilitação neurofuncional.",
-        formacao: "Formação em atualização.",
+        frase: "Atuação há 30 anos na reabilitação infantil, com foco em fisioterapia pediátrica e neurofuncional.",
+        formacao: "Formada em Fisioterapia em 1996, com capacitação em Conceito Bobath, Método Kabat, CME, TheraSuit, TheraTogs e Estimulação Elétrica Funcional, entre outras abordagens terapêuticas."
     },
     {
         id: "barbara",

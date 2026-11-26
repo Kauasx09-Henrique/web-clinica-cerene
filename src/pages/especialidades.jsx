@@ -9,7 +9,7 @@ const ESPECIALIDADES = [
         cor: "amarelo",
         icone: "person-simple-walk",
         titulo: "Fisioterapia",
-        texto: "Cuidado  com o desenvolvimento motorde bebês e crianças , promovendo novas conquistas, autonomia e qualidade de vida.",
+        texto: "Cuidado  com o desenvolvimento motor de bebês e crianças , promovendo novas conquistas, autonomia e qualidade de vida.",
     },
     {
         id: "fonoaudiologia",
@@ -17,7 +17,7 @@ const ESPECIALIDADES = [
         cor: "vermelho",
         icone: "chats-circle",
         titulo: "Fonoaudiologia",
-        texto: "Apoio à comunicação, à linguagem e à fala, para que a criança se expresse e seja compreendida, alimetação e deglutição.",
+        texto: "Apoio a alimetação e deglutição, comunicação, à linguagem e à fala, para que a criança se expresse e seja compreendida.",
     },
     {
         id: "psicologia",
@@ -25,7 +25,7 @@ const ESPECIALIDADES = [
         cor: "ciano",
         icone: "hand-heart",
         titulo: "Psicologia",
-        texto: "Acolhimento para a criança e para a família, incluindo o acompanhamento de pessoas com TEA.",
+        texto: "Acolhimento para a criança e para a família, incluindo o acompanhamento de crianças com TEA.",
     },
     {
         id: "terapia-ocupacional",
