@@ -4,20 +4,12 @@ import "./styles/especialidades.css";
 
 const ESPECIALIDADES = [
     {
-        id: "neuropediatria",
-        foto: "./fotos/especialidades/neuropediatria.webp",
-        cor: "verde",
-        icone: "brain",
-        titulo: "Neuropediatria",
-        texto: "Avaliação do desenvolvimento neurológico de crianças e adolescentes, com acompanhamento médico próximo da família.",
-    },
-    {
         id: "fisioterapia",
         foto: "./fotos/especialidades/fisioterapia.webp",
         cor: "amarelo",
         icone: "person-simple-walk",
         titulo: "Fisioterapia",
-        texto: "Cuidado com o desenvolvimento motor, a postura e a autonomia nos movimentos, no ritmo de cada paciente.",
+        texto: "Cuidado  com o desenvolvimento motorde bebês e crianças , promovendo novas conquistas, autonomia e qualidade de vida.",
     },
     {
         id: "fonoaudiologia",
@@ -25,7 +17,7 @@ const ESPECIALIDADES = [
         cor: "vermelho",
         icone: "chats-circle",
         titulo: "Fonoaudiologia",
-        texto: "Apoio à comunicação, à linguagem e à fala, para que a criança se expresse e seja compreendida.",
+        texto: "Apoio à comunicação, à linguagem e à fala, para que a criança se expresse e seja compreendida, alimetação e deglutição.",
     },
     {
         id: "psicologia",
@@ -194,7 +186,7 @@ export default function Especialidades({
                                 disabled={ativo === 0}
                                 aria-label="Especialidade anterior"
                             >
-                                <Icon name="arrow-right" />
+                                <Icon name="arrow-left" />
                             </button>
                             <button
                                 type="button"
@@ -250,8 +242,7 @@ export default function Especialidades({
                                                 className="painel__link"
                                                 href={hrefEspecialidade(e.id)}
                                             >
-                                                Saiba mais
-                                                <Icon name="arrow-right" />
+
                                             </a>
                                         </div>
                                     </div>

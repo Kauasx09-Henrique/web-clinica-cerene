@@ -10,7 +10,7 @@ const ETAPAS = [
 ];
 
 const DIFERENCIAIS = [
-    { icone: "users-three", titulo: "Equipe multidisciplinar", texto: "Neurologia e terapias em um só lugar." },
+    { icone: "users-three", titulo: "Equipe multidisciplinar", texto: "Todas as terapias em um so lugar" },
     { icone: "hand-heart", titulo: "Acolhimento à família", texto: "Cada etapa explicada com clareza e carinho." },
     { icone: "brain", titulo: "Estudo neurológico", texto: "Método e ciência a serviço do desenvolvimento." },
 ];

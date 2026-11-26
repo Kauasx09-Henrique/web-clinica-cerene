@@ -21,7 +21,7 @@ const ETAPAS = [
         id: "plano",
         cor: "vermelho",
         titulo: "Plano individual",
-        texto: "A equipe multidisciplinar se reúne e desenha um plano com metas claras, explicado com transparência para a família.",
+        texto: "Elaborado especificamente para cada criança, considerando suas necessidades, seu diagnóstico, suas habilidades motoras, suas dificuldades e, principalmente, seu potencial de desenvolvimento.",
     },
     {
         id: "acompanhamento",

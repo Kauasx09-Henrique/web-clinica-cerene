@@ -70,8 +70,8 @@ const EQUIPE = [
         id: "raquel-aboudib",
         nome: "Raquel Aboudib",
         categoria: "Fisioterapia",
-        funcao: "Fisioterapeuta",
-        registro: "CREFITO-11 00000",
+        funcao: "Fisioterapeuta · Sócia-proprietária",
+        registro: "CREFITO-23566",
         cor: "azul",
         status: "ativo",
         destaque: true,
@@ -216,7 +216,6 @@ const laminaVariants = {
 
 export default function Equipe({
     profissionais = EQUIPE,
-    agendarHref = "#contato",
 }) {
     const secaoRef = useRef(null);
     const [estado, setEstado] = useState({ catIdx: 0, profIdx: 0, direcao: 1 });
@@ -532,10 +531,7 @@ export default function Equipe({
                                             animate={{ opacity: 1, y: 0 }}
                                             transition={{ duration: 0.5, delay: 0.22, ease: EASE }}
                                         >
-                                            <a className="eq__link" href={agendarHref}>
-                                                <span>Agendar avaliação</span>
-                                                <Seta />
-                                            </a>
+
                                         </motion.div>
                                     </motion.div>
                                 </AnimatePresence>
