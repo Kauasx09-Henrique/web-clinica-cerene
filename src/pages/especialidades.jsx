@@ -17,7 +17,7 @@ const ESPECIALIDADES = [
         cor: "vermelho",
         icone: "chats-circle",
         titulo: "Fonoaudiologia",
-        texto: "Apoio a alimetação e deglutição, comunicação, à linguagem e à fala, para que a criança se expresse e seja compreendida.",
+        texto: "Apoio a alimetação deglutição, comunicação, à linguagem e à fala, para que a criança se expresse e seja compreendida.",
     },
     {
         id: "psicologia",
